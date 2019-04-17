@@ -35,8 +35,8 @@ struct _Space {
   Set *objects;               /*!< What object is currently on the space */
   char gdesc[ROWS][COLUMNS];             /*!< campo gdesc*/
   char description[WORD_SIZE+1];   /*!< brief description of the space*/
-  char descriptionDetallada[WORD_SIZE+1];
-  BOOL iluminado;
+  char detaildescription[WORD_SIZE+1];
+  BOOL iluminated;
 };
 
 
@@ -55,7 +55,7 @@ Space* space_create(Id id) {
 
   newSpace->name[0] = '\0';
   newSpace->description[0] = '\0';
-  newSpace->descriptionDetallada[0] = '\0';
+  newSpace->detaildescription[0] = '\0';
 
   newSpace->north_link = NO_ID;
   newSpace->south_link = NO_ID;
@@ -63,7 +63,7 @@ Space* space_create(Id id) {
   newSpace->west_link = NO_ID;
   newSpace->up_link = NO_ID;
   newSpace->down_link = NO_ID;
-  newSpace->iluminado = FALSE;
+  newSpace->iluminated = FALSE;
   
   newSpace->objects = set_create();
  
@@ -99,12 +99,12 @@ STATUS space_set_name(Space* space, char* name) {
   return OK;
 }
 
-STATUS space_set_iluminado(Space* space, BOOL iluminado){
+STATUS space_set_iluminated(Space* space, BOOL iluminated){
     if(!space){
         return ERROR;
     }
     
-    space->iluminado = iluminado;
+    space->iluminated = iluminated;
     
     return OK;
 }
@@ -191,11 +191,11 @@ Id space_get_id(Space* space) {
   return space->id;
 }
 
-BOOL space_get_iluminado(Space *space){
+BOOL space_get_iluminated(Space *space){
     if (!space) {
     return FALSE;
   }
-    return space->iluminado;
+    return space->iluminated;
 }
 
 
@@ -374,18 +374,18 @@ char* space_get_description(Space* space){
   return space->description;
 }
 
-STATUS space_set_descriptionDetallada(Space* space, char* descriptionDetallada){
-  if(!space || !descriptionDetallada) return ERROR;
+STATUS space_set_detail_description(Space* space, char* detaildescription){
+  if(!space || detaildescription) return ERROR;
   
-  if(strcpy(space->descriptionDetallada,descriptionDetallada) == ERROR){
+  if(strcpy(space->detaildescription,detaildescription) == ERROR){
     return ERROR;
   }
   return OK;
 }
 
-char* space_get_descriptionDetallada(Space* space){
+char* space_get_detail_description(Space* space){
   if(!space) return NULL;
-  return space->descriptionDetallada;
+  return space->detaildescription;
 }
 
 
