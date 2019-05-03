@@ -67,11 +67,21 @@ char *command_get_link_name(Command *pc){
   if(!pc){
     return NULL;
   }
-  return pc->name;
+  return pc->link_name;
 }
 
 /*!< Sets the name of the structure to the name you want */
 Command *command_set_name(Command *pc, const char *name){
+  if(!pc || !name){
+    return NULL;
+  }
+  if(!strcpy(pc->link_name, name)){
+    return NULL;
+  }
+  return pc;
+}
+
+Command *command_set_link_name(Command *pc, const char *name){
   if(!pc || !name){
     return NULL;
   }

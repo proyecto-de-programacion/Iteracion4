@@ -145,4 +145,16 @@ Command *command_set_command(Command *pc, Enum_command cmd);
 */
 Command *command_set_name(Command *pc, const char *name);
 
+/**
+*      @brief Set the name of te link
+*                              
+*           
+*      @param pc command we want to change 
+*      @param name name link we imput
+*      @date  11/03/2019 
+*      @author Ciro Alonso   
+*      @return Command* of the command we set the name to                    
+*/
+Command *command_set_link_name(Command *pc, const char *name);
+
 #endif
