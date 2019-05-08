@@ -1,0 +1,46 @@
+#s:1|Cabina 1|-1|1|-1|-1|-1|-1|       |       |       |TRUE|Cabina de la nave|Uhh, mi silla como capitan, nice|
+#s:2|Cabina 2|1|2|-1|-1|-1|11|       |       |       |FALSE|Cabina de la nave|El suelo parece estar hueco, mmmm, hay algo raro aqui, un hueco con forma de patito|
+#s:3|Pasillo 1|2|3|-1|-1|-1|-1|       |       |       |TRUE|Pasillo|El laberinto del fauno parece esto|
+#s:4|Pasillo 3|3|4|10|-1|-1|-1|       |       |       |TRUE|Este pasillo tiene mas ventilacion de lo normal, hay algo raro aqui|descripcion iluminada|
+#s:5|Pasillo 4|4|5|-1|-1|-1|-1|       |       |       |TRUE|Pasillo|Deberiamos echar a la de la limpieza despues de esto|
+#s:6|Almacen|5|6|-1|-1|-1|-1|       |       |       |TRUE|Almacen, conocido como mi chatarreria|Les diremos a los del seguro qeu aqui habia joyas|
+#s:7|Ala izquierda|6|7|-1|-1|1|-1|       |       |       |TRUE|Esta ala parece que ha sufrido daño, habra que ir con cuidado|p'ala nenas de la galaxia C-385|
+#s:8|Maquinaria|7|8|10|-1|-1|-1|       |       |       |TRUE|Se podria decir que aqui esta la maquinaria pesada|Se podria decir que en esta sala parece que solo ay maquinas|
+#s:9|Ala derecha|8|9|-1|-1|-1|-1|       |       |       |TRUE|De ala en ala, me quedo mejor en la sala que esta esta un poco rota|Esto cuenta como la mano derecha?|
+#s:10|Cola|9|-1|-1|-1|11|-1|       |       |       |TRUE|Nada importante, espera...|Veo que hay un poco de luz arriba|
+
+
+#o:1|2|2|Linterna|Ilumina el espacio, ya que no hay luz|linterna movida|TRUE|FALSE|FALSE|TRUE|FALSE|-1|
+#o:2|6|6|Llave|Para abrir el panel de control|La llave andante|TRUE|FALSE|FALSE|FALSE|FALSE|-1|
+#o:3|3|3|Escombro1|Chatarra que te puede llegar a impedir el paso|No hace falta mover la basura|FALSE|FALSE|FALSE|FALSE|FALSE|-1|
+#o:4|4|4|Escombro2|Chatarra que te puede llegar a impedir el paso|No hace falta mover la basura|FALSE|FALSE|FALSE|FALSE|FALSE|-1|
+#o:5|5|5|Escombro3|Chatarra que te puede llegar a impedir el paso|No hace falta mover la basura|FALSE|FALSE|FALSE|FALSE|FALSE|-1|
+#o:6|8|8|Escombro4|Chatarra que te puede llegar a impedir el paso|No hace falta mover la basura|FALSE|FALSE|FALSE|FALSE|FALSE|-1|
+#o:7|4|4|Fuego|Pequeñas llamas que te impediran el paso si no las apagas|descripcion movida|FALSE|FALSE|FALSE|FALSE|FALSE|-1|
+#o:8|1|1|Extintor|Puede llegar a reducir las llamas para poder pasar a otro habitacion|Extintor movida|TRUE|FALSE|FALSE|TRUE|FALSE|4|
+#o:9|1|1|Baby Groot|Groot bebe, a lo mejor si le ayudas pasa algo|movida|FALSE|FALSE|FALSE|FALSE|FALSE|-1|
+#o:10|4|4|Panel de Control|Panel que monitora la nave espacial|descripcion movida|FALSE|FALSE|FALSE|FALSE|FALSE|-1|
+#o:11|1|1|Objeto Inutil|No tiene ningun uso|No hace falta mover la basura|TRUE|FALSE|FALSE|FALSE|FALSE|-1|
+#o:12|2|2|Objeto Inutil|No tiene ningun uso|No hace falta mover la basura|TRUE|FALSE|FALSE|FALSE|FALSE|-1|
+#o:13|8|8|Objeto Inutil|No tiene ningun uso|No hace falta mover la basura|TRUE|FALSE|FALSE|FALSE|FALSE|-1|
+#o:14|9|9|Objeto Inutil|No tiene ningun uso|No hace falta mover la basura|TRUE|FALSE|FALSE|FALSE|FALSE|-1|
+#o:15|10|10|Objeto Inutil|No tiene ningun uso|descripcion movida|TRUE|FALSE|FALSE|FALSE|FALSE|-1|
+#o:16|3|3|Pala|Puede llegar a quitar escombros cuando hay un tunel escondido|Pala chiquitas wapas|TRUE|FALSE|FALSE|FALSE|FALSE|10|
+#o:17|6|6|Cables|Es posible de hacer un puente con ellos|Cable Jazztel|TRUE|FALSE|FALSE|FALSE|FALSE|-1|
+#o:18|4|4|Patito de Goma|Pues darselo a alguien o quedartelo|Algunos dicen que en su anterior vida fuen una Oca|TRUE|FALSE|FALSE|FALSE|FALSE|11|
+#o:19|6|6|Comida de Groot|EHHHH, que es de Groot, no te lo puedes comer|Parece que Groot no tiene mucha hambre|TRUE|FALSE|FALSE|FALSE|FALSE|-1|
+#o:20|10|10|Cassette|Parece que no funciona, le echaremos la culpa a Gamora|Pa' que lo muevo?|TRUE|FALSE|FALSE|FALSE|FALSE|-1|
+
+#l:1|Union cabina|1|2|0|
+#l:2|cabina-pasillo|2|3|0|
+#l:3|union pasillo|3|4|0|
+#l:4|union pasillo|4|5|1|
+#l:5|pasillo-almacen|5|6|0|
+#l:6|almacen-ala_izda|6|7|0|
+#l:7|ala_izda-maquinaria|7|8|0|
+#l:8|maquinaria-ala_dcha|8|9|0|
+#l:9|ala_dcha-cola|9|10|1|
+#l:10|Tunel 1|4|8|1|
+#l:11|Tunel 2|2|10|1|
+
+#p:1|Rocket|1|1|-1|-1|-1|-1|-1|-1|
