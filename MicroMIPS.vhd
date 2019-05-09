@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------
 -- Fichero: MicroMIPS.vhd
--- Autores: 
--- Grupo de Prácticas:
+-- Autores: Irene Crusi Mozota y Laura Espada Caja
+-- Grupo de Prácticas: 2122
 -- Práctica: 4
 ----------------------------------------------------------------------
 
@@ -57,6 +57,8 @@ architecture Practica of MicroMIPS is
 		-- Señales para el PC
 		Jump : out  std_logic;
 		Branch : out  std_logic;
+		PCToReg : out std_logic;
+		
 		-- Señales para la memoria
 		MemToReg : out  std_logic;
 		MemWrite : out  std_logic;
@@ -76,7 +78,7 @@ architecture Practica of MicroMIPS is
 
 	signal aluA, aluB, aluC : std_logic_vector(31 downto 0);
 
-	signal regA3 : std_logic_vector(4 downto 0); -- Direcciones del GPR
+	signal regA3, sA3 : std_logic_vector(4 downto 0); -- Direcciones del GPR
 	signal rd2, wd3 : std_logic_vector(31 downto 0); -- Registros GPR
 
 	
@@ -84,13 +86,13 @@ architecture Practica of MicroMIPS is
 	signal instr : std_logic_vector(31 downto 0);
 	signal extSignInmAux : std_logic_vector(15 downto 0);
 
-	signal pc, pcBranch, pcMas4, pcIn, pcInPre : std_logic_vector(31 downto 0);
+	signal pc, pcBranch, pcMas4, pcIn, pcInPre, muxMTR : std_logic_vector(31 downto 0);
 	
 	signal aluControl : std_logic_vector(2 downto 0);
 
 	signal flagZ : std_logic; -- Flag Z de la ALU
 	
-	signal jump, branch, memToReg, memWrite, regDest, aluSrc, regWrite, pcSrc, ExtCero : std_logic;
+	signal jump, branch, memToReg, memWrite, regDest, aluSrc, regWrite, pcSrc, ExtCero, pctoreg : std_logic;
 	
 
 begin
@@ -114,7 +116,7 @@ begin
 		Rd1 => aluA,
 		A2 => instr(20 downto 16),
 		Rd2 => rd2,
-		A3 => regA3,
+		A3 => sA3,
 		Wd3 => wd3,
 		We3 => regWrite
 	);
@@ -129,6 +131,8 @@ begin
 		-- Señales para el PC
 		Jump => jump,
 		Branch => branch,
+		PCToReg => pctoreg,
+		
 		-- Señales para la memoria
 		MemToReg => memToReg,
 		MemWrite => memWrite,
@@ -162,11 +166,20 @@ begin
 	
 	MemDataWe <= memWrite; -- Habilitación de escritura en memoria de datos
 	
+	------------------------------CAMBIOS------------------------------
 	
-	wd3 <= aluC when memToReg = '0' else MemDataDataRead; -- Resultado de ALU o memoria de datos.
+	--- Cambio de wd3 por muxMTR (salida del multiplexor de MemToReg)	
+	
+	muxMTR <= aluC when memToReg = '0' else MemDataDataRead; -- Resultado de ALU o memoria de datos.
 	
 
+	--- Multiplexor de PCToReg entre PCMas4 y wd3
 	
+	wd3 <= PCMas4 when pctoreg = '1' else muxMTR;
+	
+	--- Multiplexor de PCToReg entre $ra y regA3
+	
+	sA3 <= regA3 when pctoreg = '0' else "11111";
 
 	
 	MemProgAddr <= pc;
